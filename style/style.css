@@ -1,0 +1,87 @@
+/*
+body>div{
+	margin-top: 10px;
+}
+.container{
+	padding: 0;
+}
+a{
+	text-decoration: none;
+}
+a>div{
+	border: 10px solid white;
+	border-radius: 3px;
+	margin: 10px;
+	background-color: #EEEEEE;
+}
+div>div:before {
+  content: " ";
+  position: absolute;
+  z-index: -1;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  border: 5px solid #ffea00;
+}
+
+div>p{
+	padding: 13px;
+}
+
+div .col-md-3{
+	margin: 0;
+}
+
+img{
+	padding: 4%;
+	height: 200px;
+	width: 100%;
+	align-items: center;
+}
+*/
+body{
+	background-color: #EEEEEE;
+}
+
+.container{
+	padding: 0;
+	margin: 0 auto;
+}
+
+
+
+img{
+	width: 100%;
+	padding: 0;
+	border-radius: none;
+}
+
+.card{
+	border-radius: none;
+	border: 20px solid rgba(255,255,255,0.1);
+	background-clip: padding-box;
+	background-color: white;
+	padding: 0;
+}
+
+.card:before{
+	content: " ";
+	position: absolute;
+	z-index: -1;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.detail{
+	padding: 5px;
+	float: left;
+	color: #FF6666;
+}
+
+.share{
+	float: right;
+}
