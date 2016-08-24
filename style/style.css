@@ -53,12 +53,9 @@ body{
 
 img{
 	width: 100%;
-	padding: 0;
-	border-radius: none;
 }
 
 .card{
-	border-radius: none;
 	border: 20px solid rgba(255,255,255,0.1);
 	background-clip: padding-box;
 	background-color: white;
@@ -74,6 +71,9 @@ img{
 	right: 0px;
 	bottom: 0px;
 	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+.card-img-top{
+	border-radius: 0;
 }
 
 .detail{
