@@ -13,7 +13,7 @@ $(document).ready(function () {
 
 
 
-
+    var initialHeight = 0;
 	var parseApplicationId = 'X5ScYGClDCL7LONVxJyrnB93mfyO1jerCiGqSTRd'
 	var parseJavaScriptKey = 'f9kYD58TwhFEp3pK4L2L47KjtdsFLzIW3dtDiIG2'
 	
@@ -49,7 +49,7 @@ $(document).ready(function () {
     								.append( $('<a>' , { href: "#" } ).addClass('share')
     											.append( $('<img>').attr('src',"asset/web.png") ) 
     										)
-    							).appendTo('.card-columns');
+    							).appendTo('.card-columns').fadeIn('slow');
     			}
 
     		}, error : function(error){
@@ -60,6 +60,7 @@ $(document).ready(function () {
 
     }
     getFeeds();
+    initialHeight = $(window).height();
 
     $('.detail').click(function(e){
 
@@ -102,18 +103,20 @@ $(document).ready(function () {
         });
         });
 
+        $('body').css('height',initialHeight);
+
     }
 
-    if ( window.matchMedia('(max-width: 401px)').matches ){
+    // if ( window.matchMedia('(max-width: 401px)').matches ){
         $(window).scroll(function(){
 
             function elementScrolled(elem){
 
                 var docViewTop = $(window).scrollTop();
                 var docViewBottom = docViewTop + $(window).height();
-                var elemTop = $(elem).offset().top+150;
-                var theresholdForTopCard = $(window).height()*1/10;
-                var theresholdForBottomCard = $(window).height()*1/10;
+                var elemTop = $(elem).offset().top;
+                var theresholdForTopCard = $(window).height();
+                var theresholdForBottomCard = $(window).height();
                 return (((elemTop-theresholdForBottomCard) <= docViewBottom) && ((elemTop+theresholdForTopCard) >= docViewTop));
             
             }
@@ -130,7 +133,7 @@ $(document).ready(function () {
 
             });
         });   
-    }
+    // }
 
     $('svg').click( function(){
         $('#1').toggle(70,function(){
