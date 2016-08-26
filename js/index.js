@@ -26,7 +26,7 @@ $(document).ready(function () {
                                                 .addClass('detail')
                                                 .data("id",id)
                                                 .html("Detail") 
-                                                .click( function(){ attachclickeventhandler(id); } )
+                                                .click( function(){ attachclickeventhandler($(this).data('id')); } )
                                                 )
     								.append( $('<a>' , { href: "#" } ).addClass('share')
     											.append( $('<img>').attr('src',"asset/web.png") ) 
@@ -48,13 +48,34 @@ $(document).ready(function () {
     
     function attachclickeventhandler(id){
         
+        var query = new Parse.Query(feeds);
+        
+        query.get(id, {
+            success: function(object) {
 
-        $('#detail').addClass('deep-detail');
-         
-            $('<div>').addClass('card-columns')
-                .append( $('<div>').addClass('card')
-                .html(id) )
-                .appendTo('#detail');
+                var caption = object.get("captions");
+                var detail = object.get("deepDetail");
+                var imageURl = object.get("images").url();
+
+                $('#detail').addClass('deep-detail');
+                
+                $('.root').addClass('blurring');
+
+                $('<div>').addClass('col-md-8 offset-md-2').append(
+                    $('<div>').addClass('card')
+                        .append( $('<div>').addClass('cross-img').append( $('<img>').attr('src', 'asset/cross.png') ).click( function(){ $('#detail>div').remove();   $('.root').removeClass('blurring');}) )
+                        .append( $('<img>').addClass('card-img-top').attr('src', imageURl))
+                        .append( $('<div>').addClass('card-block')
+                                    .append( $('<h4>').addClass('card-title').html(id) )
+                                    .append( $('<p>').addClass('card-text').html(detail) )))
+                        .appendTo('#detail');
+
+            },
+            error: function(error) {
+                console.log("An error occured :(");
+            }
+        });
+
     }
 
     if ( window.matchMedia('(max-width: 401px)').matches ){
