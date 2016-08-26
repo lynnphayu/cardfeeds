@@ -44,9 +44,9 @@ body{
 	background-color: #EEEEEE;
 }
 
-.container{
+.root{
 	padding: 0;
-	margin: 0 auto;
+	margin: 0 3%;
 }
 
 
@@ -56,12 +56,40 @@ img{
 }
 
 .card{
-	border: 20px solid rgba(255,255,255,0.1);
+	border: 10px solid rgba(255,255,255,0.1);
 	background-clip: padding-box;
 	background-color: white;
 	padding: 0;
+	margin-top: 10%;
+	border-radius: 0;
 }
 
+.card-columns{
+	padding-top: 20px;
+	column-count: 4;
+}
+
+.deep-detail>.card-columns{
+	column-count: 1;
+}
+
+@media ( max-width: 480px ){
+	.card-columns{
+		column-count: 1;
+	}
+}
+@media ( min-width:486px ) and ( max-width: 768px ){
+	.card-columns{
+		column-count: 3;
+	}
+}
+
+@media ( min-width: 768px ){
+	.card:hover{
+		transform : scale(1.05);
+		transition-duration : 100ms;
+	}
+}
 .card:before{
 	content: " ";
 	position: absolute;
@@ -70,7 +98,7 @@ img{
 	left: 0px;
 	right: 0px;
 	bottom: 0px;
-	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	box-shadow: 0 2px 5px rgba(0,0,0,0.16), 0 2px 5px rgba(0,0,0,0.23);
 }
 .card-img-top{
 	border-radius: 0;
@@ -84,4 +112,17 @@ img{
 
 .share{
 	float: right;
+}
+
+.deep-detail{
+	position: absolute;
+	top: 0;
+	z-index: 5;
+	color: black;
+}
+
+
+.inSight{
+	transform : scale(1.1);
+	transition-duration : 100ms;
 }

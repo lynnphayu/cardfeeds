@@ -16,13 +16,19 @@ $(document).ready(function () {
     				var captions = results[i].get("captions");
     				var intros = results[i].get("intros");
     				var imageURl = results[i].get("images").url();
-    				$('<div>').attr('class','card')
-    					.append( $('<img>').attr('class', 'card-img-top').attr('src', imageURl) )
-    					.append( $('<div>').attr('class','card-block')
-    								.append( $('<h4>').attr('class','card-title').html(captions) )
-    								.append( $('<p>').attr('class','card-text').html(intros) )
-    								.append( $('<a>').attr('class','detail').attr('href','#').html('Detail') )
-    								.append( $('<a>').attr('class','share').attr('href','#')
+                    var id = results[i].id;
+    				$('<div>').addClass('card')
+    					.append( $('<img>').addClass('card-img-top').attr('src', imageURl) )
+    					.append( $('<div>').addClass('card-block')
+    								.append( $('<h4>').addClass('card-title').html(captions) )
+    								.append( $('<p>').addClass('card-text').html(intros) )
+    								.append( $('<a>' , { href: "#" } )
+                                                .addClass('detail')
+                                                .data("id",id)
+                                                .html("Detail") 
+                                                .click( function(){ attachclickeventhandler(id); } )
+                                                )
+    								.append( $('<a>' , { href: "#" } ).addClass('share')
     											.append( $('<img>').attr('src',"asset/web.png") ) 
     										)
     							).appendTo('.card-columns');
@@ -35,6 +41,49 @@ $(document).ready(function () {
 
     }
     getFeeds();
+
+    $('.detail').click(function(){
+        attachclickeventhandler();
+    }); 
+    
+    function attachclickeventhandler(id){
+        
+
+        $('#detail').addClass('deep-detail');
+         
+            $('<div>').addClass('card-columns')
+                .append( $('<div>').addClass('card')
+                .html(id) )
+                .appendTo('#detail');
+    }
+
+    if ( window.matchMedia('(max-width: 401px)').matches ){
+        $(window).scroll(function(){
+
+            function elementScrolled(elem){
+
+                var docViewTop = $(window).scrollTop();
+                var docViewBottom = docViewTop + $(window).height();
+                var elemTop = $(elem).offset().top+150;
+                var theresholdForTopCard = $(window).height()*1/10;
+                var theresholdForBottomCard = $(window).height()*1/10;
+                return (((elemTop-theresholdForBottomCard) <= docViewBottom) && ((elemTop+theresholdForTopCard) >= docViewTop));
+            
+            }
+             
+            // This is where we use the function to detect if ".box2" is scrolled into view, and when it is add the class ".animated" to the <p> child element
+            $('.card-columns>.card').each( function(){
+
+                if(elementScrolled($(this))) {
+                    $(this).addClass('inSight');
+                }
+                else {
+                    $(this).removeClass('inSight');
+                }
+
+            });
+        });   
+    }
 
 });
 
