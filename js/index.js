@@ -26,7 +26,10 @@ $(document).ready(function () {
                                                 .addClass('detail')
                                                 .data("id",id)
                                                 .html("Detail") 
-                                                .click( function(){ attachclickeventhandler($(this).data('id')); } )
+                                                .click( function(e){ 
+                                                        e.preventDefault();
+                                                        attachclickeventhandler($(this).data('id')); 
+                                                    } )
                                                 )
     								.append( $('<a>' , { href: "#" } ).addClass('share')
     											.append( $('<img>').attr('src',"asset/web.png") ) 
@@ -42,7 +45,9 @@ $(document).ready(function () {
     }
     getFeeds();
 
-    $('.detail').click(function(){
+    $('.detail').click(function(e){
+
+        e.preventDefault();
         attachclickeventhandler();
     }); 
     
@@ -69,6 +74,9 @@ $(document).ready(function () {
                                     .append( $('<h4>').addClass('card-title').html(id) )
                                     .append( $('<p>').addClass('card-text').html(detail) )))
                         .appendTo('#detail');
+
+                var topoffsetdetail = $(window).scrollTop();
+                $('#detail').css({ top: topoffsetdetail+30 , left: 0 });
 
             },
             error: function(error) {
@@ -105,6 +113,10 @@ $(document).ready(function () {
             });
         });   
     }
+
+    $('svg').click( function(){
+        $('.dropdown-items').toggleClass('hide').addClass('inSight');
+    });
 
 });
 
