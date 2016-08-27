@@ -115,9 +115,7 @@ $(document).ready(function () {
                 var docViewTop = $(window).scrollTop();
                 var docViewBottom = docViewTop + $(window).height();
                 var elemTop = $(elem).offset().top;
-                var theresholdForTopCard = $(window).height();
-                var theresholdForBottomCard = $(window).height();
-                return (((elemTop-theresholdForBottomCard) <= docViewBottom) && ((elemTop+theresholdForTopCard) >= docViewTop));
+                return (((elemTop) <= docViewBottom) && ((elemTop) >= docViewTop));
             
             }
              
@@ -146,7 +144,7 @@ $(document).ready(function () {
                 });
             });
         });
-        $(this).css('stroke','#111111');
+
     });
     if ( window.matchMedia('(min-width: 800px)').matches ){
         $('.navigator').mouseleave( function(){

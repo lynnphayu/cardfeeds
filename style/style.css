@@ -353,3 +353,9 @@ button , img {
 	70% { -webkit-transform: scale(1.1); transform: scale(1.1); opacity: .8; -webkit-animation-timing-function: ease-out; animation-timing-function: ease-out; }
 	100% { -webkit-transform: scale(1); transform: scale(1); opacity: 1; }
 }
+
+
+
+.rotation{
+	transform: rotate(90deg);
+}
