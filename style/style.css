@@ -90,7 +90,7 @@
 }
 
 .pace .pace-progress {
-  background-color: rgba(0, 0, 0, 0.19999999999999996);
+  background-color: rgba(0, 0, 0, 0.05);
   position: fixed;
   z-index: -1;
   top: 0;
@@ -185,8 +185,7 @@ body{
 
 
 .root{
-	padding: 0;
-	margin: 0 3%;
+	padding: 0 3%;
 }
 
 span{
@@ -202,7 +201,7 @@ img{
 
 
 .card{
-	border: 10px solid rgba(255,255,255,0.1);
+	/*border: 10px solid rgba(255,255,255,0.1);*/
 	background-clip: padding-box;
 	background-color: white;
 	padding: 0;
@@ -251,9 +250,16 @@ button , img {
 }
 
 @media ( max-width: 480px ){
+	
+	.col-md-8>.card{
+		width: 100%;
+
+	}
+
 	.card-columns{
 		column-count: 1;
 	}
+
 }
 @media ( min-width:486px ) and ( max-width: 768px ){
 	.card-columns{
@@ -265,6 +271,10 @@ button , img {
 	.card-columns>.card:hover{
 		transform : scale(1.05);
 		transition-duration : 100ms;
+	}
+	.card-columns{
+		padding-left: 3%;
+		padding-right: 3%;
 	}
 
 }
@@ -320,12 +330,12 @@ button , img {
 }
 
 .inSight{
-	-webkit-transform-style: preserve-3d;
+	/*-webkit-transform-style: preserve-3d;
 	transform-style: preserve-3d;
 	-webkit-transform: scale(0.4);
 	transform: scale(0.4);
 	-webkit-animation: popUp .8s ease-in forwards;
-	animation: popUp .8s ease-in forwards;
+	animation: popUp .8s ease-in forwards;*/
 
 }
 
