@@ -28,7 +28,7 @@ $(document).ready(function () {
     	query.find({
     		success : function(results){
     			for ( var i in results ) {
-                				
+                $(".root").html(i);	
 
     		}, error : function(error){
     			console.log(error.message);
